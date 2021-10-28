@@ -4,22 +4,27 @@ const API_URI = process.env.API_URI || 'http://localhost:3000';
 
 class API {
   static async checkAuth () {
-    const response = await axios.post(`${API_URI}/auth/check`);
-    console.log(response);
-    if (response.status === 200) {
+    try {
+      const response = await axios.post(`${API_URI}/auth/check`);
+      console.log(response);
       return response.data.user;
-    } else {
-      throw new APIError(response.status, response.data);
+    } catch (e) {
+      const  { message, status } = e.response.data.error;
+      throw new APIError(status, message);
     }
+    // if (response.status === 200) {
+    // } else {
+    //   
+    // }
   }
 }
 
 class APIError extends Error {
-  constructor(status, data) {
-    super(`${status}`);
-    console.error(this, data);
+  constructor(status, message) {
+    super(`${status}: ${message}`);
+    console.error(this, message);
     this.status = status;
-    this.data = data;
+    this.message = message;
   }
 }
 

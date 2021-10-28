@@ -16,12 +16,13 @@ function App() {
         const user = await API.checkAuth();
         setUser(user);
       } catch (e) {
+        console.log(e);
         setError(e);
-        setLoading(false);
-      }
+      };
+      setLoading(false);
     }
     checkAuth();
-  });
+  }, []);
 
   return (
     <div className="App container">
@@ -30,7 +31,7 @@ function App() {
       <BrowserRouter>
         <Header />
         {error && 
-          <div className="alert alert-danger">Error: {error.status}</div>
+          <div className="alert alert-danger">Error {error.status}: {error.message}</div>
         }
         <h2>user is: {(user && user['username']) || 'undefined'}</h2>
         <Body />
