@@ -1,3 +1,5 @@
+import AuthContext from './contexts/authContext';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const LoginForm = () => {
@@ -8,6 +10,14 @@ const LoginForm = () => {
 
   const validate = values => {
     const errors = {};
+    if (values.username.length > 25) {
+      errors.username = 'Username must be less than 25 characters';
+    }
+    for (const value in values) {
+      if (!values[value]) {
+        errors[value] = 'This field is required'
+      }
+    }
     return errors
   }
 

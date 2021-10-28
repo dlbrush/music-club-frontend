@@ -12,10 +12,16 @@ class API {
       const  { message, status } = e.response.data.error;
       throw new APIError(status, message);
     }
-    // if (response.status === 200) {
-    // } else {
-    //   
-    // }
+  }
+
+  static async login(creds) {
+    try {
+      const response = await axios.post(`${API_URI}/auth/login`, creds);
+      return response.data.user
+    } catch (e) {
+      const  { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
   }
 }
 
