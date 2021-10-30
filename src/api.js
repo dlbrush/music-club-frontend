@@ -5,8 +5,7 @@ const API_URI = process.env.API_URI || 'http://localhost:3000';
 class API {
   static async checkAuth () {
     try {
-      const response = await axios.post(`${API_URI}/auth/check`);
-      console.log(response);
+      const response = await axios.post(`${API_URI}/auth/check`, {}, {withCredentials: true});
       return response.data.user;
     } catch (e) {
       const  { message, status } = e.response.data.error;
@@ -16,7 +15,7 @@ class API {
 
   static async login(creds) {
     try {
-      const response = await axios.post(`${API_URI}/auth/login`, creds);
+      const response = await axios.post(`${API_URI}/auth/login`, creds, { withCredentials: true });
       return response.data.user
     } catch (e) {
       const  { message, status } = e.response.data.error;
@@ -28,7 +27,7 @@ class API {
 class APIError extends Error {
   constructor(status, message) {
     super(`${status}: ${message}`);
-    console.error(this, message);
+    console.warn(this, message);
     this.status = status;
     this.message = message;
   }

@@ -1,8 +1,8 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Splash from './Splash';
-import Login from './Login';
+import Splash from '../Splash';
+import Login from '../Login';
 
-const MainRoutes = () => {
+const UnauthRoutes = () => {
   return (
     <Switch>
       <Route exact path='/'>
@@ -16,4 +16,4 @@ const MainRoutes = () => {
   )
 }
 
-export default MainRoutes;
+export default UnauthRoutes;
