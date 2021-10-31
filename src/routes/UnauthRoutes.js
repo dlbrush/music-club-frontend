@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Splash from '../Splash';
-import Login from '../Login';
+import Login from '../auth/Login';
+import Register from '../auth/Register';
 
 const UnauthRoutes = () => {
   return (
@@ -10,6 +11,9 @@ const UnauthRoutes = () => {
       </Route>
       <Route exact path='/login'>
         <Login />
+      </Route>
+      <Route exact path='/register'>
+        <Register />
       </Route>
       <Redirect to='/' />
     </Switch>

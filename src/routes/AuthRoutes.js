@@ -1,14 +1,31 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import RecentPosts from '../RecentPosts';
-import Login from '../Login';
+import RecentPosts from '../posts/RecentPosts';
+import PublicClubsView from '../clubs/PublicClubsView';
+import ClubContainer from '../clubs/ClubContainer';
+import ClubPosts from '../clubs/ClubPosts';
 
 const AuthRoutes = () => {
   return (
     <Switch>
-      <Route exact path='/'>
+      <Route exact path='/recent'>
         <RecentPosts />
       </Route>
-      <Redirect to='/' />
+      <Route exact path='/public-clubs'>
+        <PublicClubsView />
+      </Route>
+      <Route exact 
+             path='/clubs/:clubId' 
+             render={({match}) => {
+              return <Redirect to={`/clubs/${match.params.clubId}/posts`}/>
+             }
+      }/>
+      <Route exact 
+             path='/clubs/:clubId/posts' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={ClubPosts}/>
+             }
+      }/>
+      <Redirect to='/recent' />
     </Switch>
   )
 }

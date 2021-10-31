@@ -1,8 +1,8 @@
-import LoginForm from './LoginForm';
+import LoginForm from '../forms/LoginForm';
 
 const Login = () => {
   return (
-    <main className="Splash col-md-9 col-lg-10">
+    <main className="Login col-md-9 col-lg-10">
       <h1 className="border-bottom border-dark mt-4 pb-2">
         Log in
       </h1>

@@ -15,12 +15,18 @@ const AppNav = () => {
             <NavLink className="list-group-item list-group-item-action" exact to='/login'>
               Log in
             </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/register'>
+              Register
+            </NavLink>
           </ul>
         }
         {user && 
           <ul className="list-group list-group-flush">
-            <NavLink className="list-group-item list-group-item-action" exact to='/'>
+            <NavLink className="list-group-item list-group-item-action" exact to='/recent'>
               Recent
+            </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
+              Public Clubs
             </NavLink>
           </ul>
         }

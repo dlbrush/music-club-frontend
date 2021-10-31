@@ -1,4 +1,4 @@
-import AuthContext from './contexts/authContext';
+import AuthContext from '../contexts/authContext';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useContext, useState } from 'react';
