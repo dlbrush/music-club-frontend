@@ -3,6 +3,7 @@ import RecentPosts from '../posts/RecentPosts';
 import PublicClubsView from '../clubs/PublicClubsView';
 import ClubContainer from '../clubs/ClubContainer';
 import ClubPosts from '../clubs/ClubPosts';
+import NewPost from '../posts/NewPost';
 
 const AuthRoutes = () => {
   return (
@@ -23,6 +24,12 @@ const AuthRoutes = () => {
              path='/clubs/:clubId/posts' 
              render={({match}) => {
               return <ClubContainer clubId={match.params.clubId} ContentComponent={ClubPosts}/>
+             }
+      }/>
+      <Route exact 
+             path='/clubs/:clubId/new-post' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={NewPost}/>
              }
       }/>
       <Redirect to='/recent' />

@@ -35,7 +35,7 @@ class API {
 
   static async getPublicClubs() {
     try {
-      const response = await axios.get(`${API_URI}/clubs?isPublic=true`);
+      const response = await axios.get(`${API_URI}/clubs?isPublic=true`, { withCredentials: true });
       return response.data.clubs;
     } catch(e) {
       const { message, status } = e.response.data.error;
@@ -45,7 +45,7 @@ class API {
 
   static async getClub(id) {
     try {
-      const response = await axios.get(`${API_URI}/clubs/${id}`);
+      const response = await axios.get(`${API_URI}/clubs/${id}`, { withCredentials: true });
       return response.data.club;
     } catch(e) {
       const { message, status } = e.response.data.error;
@@ -55,8 +55,38 @@ class API {
 
   static async getClubPosts(id) {
     try {
-      const response = await axios.get(`${API_URI}/posts?clubId=${id}`);
+      const response = await axios.get(`${API_URI}/posts?clubId=${id}`, { withCredentials: true });
       return response.data.posts;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async albumSearch(title, artist) {
+    try {
+      const response = await axios.get(`${API_URI}/albums/search?title=${title}&artist=${artist}`, { withCredentials: true});
+      return response.data.albums;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async newPost(clubId, data) {
+    try {
+      const response = await axios.post(`${API_URI}/clubs/${clubId}/new-post`, data, { withCredentials: true});
+      return response.data.newPost;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async joinClub(username, clubId) {
+    try {
+      const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
+      return response.data.message;
     } catch(e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);
