@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import UserContext from './contexts/userContext';
+import LogoutButton from './auth/LogoutButton';
 
 const AppNav = () => {
   const user = useContext(UserContext);
@@ -28,6 +30,7 @@ const AppNav = () => {
             <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
               Public Clubs
             </NavLink>
+            <LogoutButton />
           </ul>
         }
     </nav>

@@ -12,6 +12,7 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
   const [ error, setError ] = useState(false);
   const [ club, setClub ] = useState({});
   const user = useContext(UserContext);
+
   let isMember = false;
   if (!loading) {
     isMember = Boolean(club.members.find(member => member.username === user.username));

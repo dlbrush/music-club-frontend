@@ -3,6 +3,15 @@ import axios from 'axios';
 const API_URI = process.env.API_URI || 'http://localhost:3000';
 
 class API {
+  static async handleRequest (requestFunction) {
+    try {
+      requestFunction();
+    } catch (e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
   static async checkAuth () {
     try {
       const response = await axios.post(`${API_URI}/auth/check`, {}, {withCredentials: true});
@@ -27,6 +36,16 @@ class API {
     try {
       const response = await axios.post(`${API_URI}/auth/register`, data, { withCredentials: true });
       return response.data.user
+    } catch (e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async logout() {
+    try {
+      const response = await axios.post(`${API_URI}/auth/logout`, { withCredentials: true });
+      return response.data.message
     } catch (e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);
@@ -63,6 +82,16 @@ class API {
     }
   }
 
+  static async joinClub(username, clubId) {
+    try {
+      const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
+      return response.data.message;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
   static async albumSearch(title, artist) {
     try {
       const response = await axios.get(`${API_URI}/albums/search?title=${title}&artist=${artist}`, { withCredentials: true});
@@ -83,9 +112,29 @@ class API {
     }
   }
 
-  static async joinClub(username, clubId) {
+  static async editPost(postId, data) {
     try {
-      const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
+      const response = await axios.patch(`${API_URI}/posts/${postId}`, data, { withCredentials: true});
+      return response.data.post;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async getPost(postId) {
+    try {
+      const response = await axios.get(`${API_URI}/posts/${postId}`, { withCredentials: true});
+      return response.data.post;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async deletePost(postId) {
+    try {
+      const response = await axios.delete(`${API_URI}/posts/${postId}`, { withCredentials: true});
       return response.data.message;
     } catch(e) {
       const { message, status } = e.response.data.error;

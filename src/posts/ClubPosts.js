@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import PostList from '../posts/PostList';
+import PostList from './PostList';
 import API from '../api';
 
 const ClubPosts = ({ club }) => {

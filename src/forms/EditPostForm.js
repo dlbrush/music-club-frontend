@@ -3,22 +3,21 @@ import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 
 import API from '../api';
+import DeletePostButton from '../posts/DeletePostButton';
 
-const NewPostForm = ({ discogsId }) => {
+const NewPostForm = ({ post }) => {
   const [ failedSubmit, setFailedSubmit ] = useState('');
-  const { clubId } = useParams();
   const history = useHistory();
 
   const initialValues = {
-    content: '',
-    recTracks: '',
-    discogsId
+    content: post.content,
+    recTracks: post.recTracks
   }
 
   const onSubmit = async (values, {setSubmitting}) => {
     try {
-      await API.newPost(clubId, values);
-      history.push(`/clubs/${clubId}/posts`)
+      await API.editPost(post.id, values);
+      history.push(`/clubs/${post.clubId}/posts/${post.id}`)
     } catch(e) {
       setFailedSubmit(e.message);
     }
@@ -35,8 +34,9 @@ const NewPostForm = ({ discogsId }) => {
           <label htmlFor="content" className="mt-2">Say something about this album</label>
           <Field as="textarea" className="form-control" name="content"/>
           <label htmlFor="recTracks" className="mt-2">Recommended tracks</label>
-          <Field className="form-control" type="text" name="recTracks"/>
-          <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting}>Post</button>
+          <Field className="form-control mb-3" type="text" name="recTracks"/>
+          <button type="submit" className="btn btn-primary me-3" disabled={isSubmitting}>Edit Post</button>
+          <DeletePostButton clubId={post.clubId} postId={post.id} />
         </Form>
       )}
     </Formik>

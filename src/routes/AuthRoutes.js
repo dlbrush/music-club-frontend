@@ -2,8 +2,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import RecentPosts from '../posts/RecentPosts';
 import PublicClubsView from '../clubs/PublicClubsView';
 import ClubContainer from '../clubs/ClubContainer';
-import ClubPosts from '../clubs/ClubPosts';
+import ClubPosts from '../posts/ClubPosts';
+import ClubPostContainer from '../posts/ClubPostContainer';
 import NewPost from '../posts/NewPost';
+import EditPost from '../posts/EditPost';
+import ClubMembers from '../clubs/ClubMembers';
 
 const AuthRoutes = () => {
   return (
@@ -27,9 +30,27 @@ const AuthRoutes = () => {
              }
       }/>
       <Route exact 
+             path='/clubs/:clubId/members' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={ClubMembers}/>
+             }
+      }/>
+      <Route exact 
              path='/clubs/:clubId/new-post' 
              render={({match}) => {
               return <ClubContainer clubId={match.params.clubId} ContentComponent={NewPost}/>
+             }
+      }/>
+      <Route exact 
+             path='/clubs/:clubId/posts/:postId' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={ClubPostContainer}/>
+             }
+      }/>
+      <Route exact 
+             path='/clubs/:clubId/posts/:postId/edit' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={EditPost}/>
              }
       }/>
       <Redirect to='/recent' />

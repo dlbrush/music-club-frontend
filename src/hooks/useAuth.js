@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import API from "../api";
 
 const useAuth = () => {
-  const [ user, setUser ] = useState(undefined);
+  const [ user, setUser ] = useState(null);
   const [ authenticating, setAuthenticating ] = useState(true);
 
   useEffect(() => {
@@ -37,11 +37,21 @@ const useAuth = () => {
     }
   }
 
+  const logout = async () => {
+    try {
+      const message = await API.logout();
+      setUser(null);
+    } catch(e) {
+      throw e
+    }
+  }
+
   return {
     authenticating,
     user,
     login,
-    register
+    register,
+    logout
   }
 }
 
