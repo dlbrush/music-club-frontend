@@ -12,7 +12,6 @@ const PublicClubsView = () => {
     const getPublicClubs = async () => {
       try {
         const clubs = await API.getPublicClubs();
-        console.log(clubs);
         setPublicClubs(clubs);
       } catch (e) {
         console.warn(e);

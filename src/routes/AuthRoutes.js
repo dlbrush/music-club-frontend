@@ -7,6 +7,7 @@ import ClubPostContainer from '../posts/ClubPostContainer';
 import NewPost from '../posts/NewPost';
 import EditPost from '../posts/EditPost';
 import ClubMembers from '../clubs/ClubMembers';
+import MyClubs from '../clubs/MyClubs';
 
 const AuthRoutes = () => {
   return (
@@ -17,6 +18,12 @@ const AuthRoutes = () => {
       <Route exact path='/public-clubs'>
         <PublicClubsView />
       </Route>
+      <Route exact 
+             path='/users/:username/clubs' 
+             render={({match}) => {
+              return <MyClubs username={match.params.username}/>
+             }
+      }/>
       <Route exact 
              path='/clubs/:clubId' 
              render={({match}) => {

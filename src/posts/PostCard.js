@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/PostCard.css';
 
 const PostCard = ({ post }) => {
+  const postedAtDate = new Date(post.postedAt);
   return (
     <Link className="list-group-item list-group-item-active row d-flex mt-2" to={`/clubs/${post.clubId}/posts/${post.id}`}>
       <div className="col-12 col-md-6 row text-center align-items-center">
@@ -18,7 +19,7 @@ const PostCard = ({ post }) => {
       <div className="col-12 col-md-6 border-start">
         <p className="fst-italic">"{post.content}"</p>
         {post.recTracks && <p>Recommended Tracks: {post.recTracks}</p>}
-        <p><small>Posted by: {post.postedBy}</small></p>
+        <p><small>Posted by {post.postedBy}, {postedAtDate.toLocaleDateString()}</small></p>
       </div>
     </Link>
   )

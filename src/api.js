@@ -132,10 +132,30 @@ class API {
     }
   }
 
+  static async getRecentPosts(username) {
+    try {
+      const response = await axios.get(`${API_URI}/posts/recent/${username}`, { withCredentials: true});
+      return response.data.posts;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
   static async deletePost(postId) {
     try {
       const response = await axios.delete(`${API_URI}/posts/${postId}`, { withCredentials: true});
       return response.data.message;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async getUser(username) {
+    try {
+      const response = await axios.get(`${API_URI}/users/${username}`, { withCredentials: true});
+      return response.data.user;
     } catch(e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);

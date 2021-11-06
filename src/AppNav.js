@@ -27,6 +27,9 @@ const AppNav = () => {
             <NavLink className="list-group-item list-group-item-action" exact to='/recent'>
               Recent
             </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to={`/users/${user.username}/clubs`}>
+              My Clubs
+            </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
               Public Clubs
             </NavLink>
