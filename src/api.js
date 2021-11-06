@@ -161,6 +161,16 @@ class API {
       throw new APIError(status, message);
     }
   }
+
+  static async newComment(postId, data) {
+    try {
+      const response = await axios.post(`${API_URI}/posts/${postId}/new-comment`, data, { withCredentials: true});
+      return response.data.newComment;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
 }
 
 class APIError extends Error {

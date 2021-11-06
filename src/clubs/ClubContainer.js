@@ -65,7 +65,7 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
         <button onClick={joinClub} className="btn btn-success mb-3">Join Club</button>
       }
       <ClubNav club={club} isMember={isMember}/>
-      <ContentComponent club={club}/>
+      <ContentComponent club={club} isMember={isMember}/>
     </main>
   )
 }
