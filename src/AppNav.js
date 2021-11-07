@@ -33,6 +33,9 @@ const AppNav = () => {
             <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
               Public Clubs
             </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/new-club'>
+              Start a Club
+            </NavLink>
             <LogoutButton />
           </ul>
         }

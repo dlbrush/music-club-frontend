@@ -12,12 +12,12 @@ const CommentForm = ({ postId, addComment }) => {
 
   const onSubmit = async (values, {setSubmitting}) => {
     try {
-      const { newComment } = await API.newComment(postId, values);
+      const newComment = await API.newComment(postId, values);
       addComment(newComment);
     } catch(e) {
       setFailedSubmit(e.message);
+      setSubmitting(false);
     }
-    setSubmitting(false);
   }
 
   return (
@@ -29,7 +29,7 @@ const CommentForm = ({ postId, addComment }) => {
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <div className="col-10">
             <label htmlFor="comment">Add Comment:</label>
-            <Field as="textarea" className="form-control" name="comment"/>
+            <Field type="text" as="textarea" className="form-control" name="comment"/>
           </div>
           <div className="col-2">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Comment</button>

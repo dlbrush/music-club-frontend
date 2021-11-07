@@ -82,6 +82,16 @@ class API {
     }
   }
 
+  static async newClub(data) {
+    try {
+      const response = await axios.post(`${API_URI}/clubs`, data, { withCredentials: true });
+      return response.data.newClub;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
   static async joinClub(username, clubId) {
     try {
       const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
@@ -166,6 +176,26 @@ class API {
     try {
       const response = await axios.post(`${API_URI}/posts/${postId}/new-comment`, data, { withCredentials: true});
       return response.data.newComment;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async deleteComment(commentId) {
+    try {
+      const response = await axios.delete(`${API_URI}/comments/${commentId}`, { withCredentials: true});
+      return response.data.message;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async editComment(commentId, data) {
+    try {
+      const response = await axios.patch(`${API_URI}/comments/${commentId}`, data, { withCredentials: true});
+      return response.data.comment;
     } catch(e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);

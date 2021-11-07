@@ -8,6 +8,7 @@ import NewPost from '../posts/NewPost';
 import EditPost from '../posts/EditPost';
 import ClubMembers from '../clubs/ClubMembers';
 import MyClubs from '../clubs/MyClubs';
+import NewClub from '../clubs/NewClub';
 
 const AuthRoutes = () => {
   return (
@@ -60,6 +61,9 @@ const AuthRoutes = () => {
               return <ClubContainer clubId={match.params.clubId} ContentComponent={EditPost}/>
              }
       }/>
+      <Route exact path='/new-club'>
+       <NewClub />
+      </Route>
       <Redirect to='/recent' />
     </Switch>
   )

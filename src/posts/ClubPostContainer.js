@@ -5,6 +5,7 @@ import Post from './Post';
 import CommentForm from "../forms/CommentForm";
 
 import API from '../api';
+import CommentList from "./CommentList";
 
 const ClubPostContainer = ({ isMember }) => {
   const { postId } = useParams();
@@ -29,7 +30,22 @@ const ClubPostContainer = ({ isMember }) => {
   const addComment = (comment) => {
     setPost(post => {
       post.comments = [...post.comments, comment];
-      return post;
+      return {...post};
+    });
+  }
+
+  const deleteComment = (commentId) => {
+    setPost(post => {
+      post.comments = post.comments.filter(postComment => postComment.id !== commentId);
+      return {...post};
+    })
+  }
+
+  const editComment = (editedComment) => {
+    setPost(post => {
+      const commentIndex = post.comments.findIndex(comment => comment.id === editedComment.id);
+      post.comments[commentIndex] = editedComment;
+      return {...post};
     })
   }
 
@@ -44,6 +60,7 @@ const ClubPostContainer = ({ isMember }) => {
       {isMember && 
         <div className="ClubPostContainer-user-view">
           <CommentForm postId={postId} addComment={addComment}/>
+          <CommentList comments={post.comments} deleteComment={deleteComment} editComment={editComment}/>
         </div>
       }
     </section>

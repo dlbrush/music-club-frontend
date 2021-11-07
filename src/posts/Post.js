@@ -3,9 +3,10 @@ import { useContext } from "react";
 import UserPostControls from "./UserPostControls";
 import UserContext from "../contexts/userContext";
 
-const Post = ({ post }) => {
+const Post = ({ post, setPost }) => {
   const user = useContext(UserContext);
   const ownPost = post.postedBy === user.username;
+  const postedAt = new Date(post.postedAt);
 
   return (
     <article className={`Post row`}>
@@ -29,7 +30,11 @@ const Post = ({ post }) => {
             <p>{post.recTracks}</p>
           </div>
         }
-        {ownPost && <UserPostControls post={post}/>}
+        <div className="Post-posted-at mt-4">
+          <p className="mb-2  border-bottom"><small>Date of post</small></p>
+          <p>{postedAt.toLocaleDateString()}</p>
+        </div>
+        {ownPost && <UserPostControls post={post} />}
       </div>
     </article>
   )

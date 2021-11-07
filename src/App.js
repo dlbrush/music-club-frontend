@@ -12,7 +12,7 @@ function App() {
   const auth = useAuth();
 
   return (
-    <div className="App container">
+    <div className="App container px-md-2 px-lg-5">
     {auth.authenticating && <h1>Checking login...</h1>}
     {!auth.authenticating &&
       <AuthContext.Provider value={auth}>

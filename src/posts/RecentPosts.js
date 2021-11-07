@@ -30,7 +30,7 @@ const RecentPosts = () => {
         <h2>No recent posts! Join clubs to see posts.</h2>
       }
       {posts.length &&
-        <PostList posts={posts} />
+        <PostList posts={posts} showClub={true}/>
       }
     </main>
   )

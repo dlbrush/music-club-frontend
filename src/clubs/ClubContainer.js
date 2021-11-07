@@ -13,6 +13,8 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
   const [ club, setClub ] = useState({});
   const user = useContext(UserContext);
 
+  const foundedDate = new Date(club.founded);
+
   let isMember = false;
   if (!loading) {
     isMember = Boolean(club.members.find(member => member.username === user.username));
@@ -22,7 +24,6 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
     const getClub = async () => {
       try {
         const club = await API.getClub(clubId);
-        console.log(club);
         setClub(club);
       } catch(e) {
         console.warn(e);
@@ -56,11 +57,12 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
     return <Redirect to='/'/>
   }
   return (
-    <main className="PublicClubsView col-md-9 col-lg-10">
-      <img src={club.bannerImgUrl} alt="Club banner"/>
-      <h1 className="mt-4 pb-2">
+    <main className="ClubContainer col-md-9 col-lg-10">
+      <img src={club.bannerImgUrl} className="img-fluid" alt="Club banner"/>
+      <h1 className="mt-4">
         {club.name}
       </h1>
+      <aside className="mb-2">Founded {foundedDate.toLocaleDateString()}</aside>
       {!isMember &&
         <button onClick={joinClub} className="btn btn-success mb-3">Join Club</button>
       }

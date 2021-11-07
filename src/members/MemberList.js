@@ -4,7 +4,7 @@ const MemberList = ({ members }) => {
   return (
     <ul className="MemberList">
       {members.map(member => {
-        return <MemberListItem member={member} />
+        return <MemberListItem member={member} key={member.username} />
       })}
     </ul>
   )
