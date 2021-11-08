@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 
 import API from '../api';
 import DeletePostButton from '../posts/DeletePostButton';

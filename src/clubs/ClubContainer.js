@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router";
 
+import '../css/ClubContainer.css';
+
 import ClubNav from "./ClubNav";
 import UserContext from "../contexts/userContext";
 
@@ -11,7 +13,7 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(false);
   const [ club, setClub ] = useState({});
-  const user = useContext(UserContext);
+  const { user, addClub, removeInvitation } = useContext(UserContext);
 
   const foundedDate = new Date(club.founded);
 
@@ -41,7 +43,9 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
       setClub(club => {
         club.members.push(user);
         return club;
-      })
+      });
+      addClub(club);
+      removeInvitation(club.id);
     } catch(e) {
       console.warn(e);
     }
@@ -58,7 +62,7 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
   }
   return (
     <main className="ClubContainer col-md-9 col-lg-10">
-      <img src={club.bannerImgUrl} className="img-fluid" alt="Club banner"/>
+      <img src={club.bannerImgUrl} className="ClubContainer-banner" alt="Club banner"/>
       <h1 className="mt-4">
         {club.name}
       </h1>

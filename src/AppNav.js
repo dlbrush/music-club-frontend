@@ -5,8 +5,12 @@ import UserContext from './contexts/userContext';
 import LogoutButton from './auth/LogoutButton';
 
 const AppNav = () => {
-  const user = useContext(UserContext);
-
+  const { user } = useContext(UserContext);
+  console.log(user);
+  let badgeColor;
+  if (user) {
+    badgeColor = user.invitations.length > 0 ? 'danger' : 'secondary';
+  }
   return (
     <nav className="AppNav flex-column col-md-3 col-lg-2">
         {!user && 
@@ -29,6 +33,9 @@ const AppNav = () => {
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to={`/users/${user.username}/clubs`}>
               My Clubs
+            </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to={`/users/${user.username}/invitations`}>
+              Invitations  <span class={`badge bg-${badgeColor} pt-1 pb-1 ms-2`}>{user.invitations.length}</span>
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
               Public Clubs

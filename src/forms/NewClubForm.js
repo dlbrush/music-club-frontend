@@ -8,7 +8,7 @@ import UserContext from '../contexts/userContext';
 const NewClubForm = () => {
   const [ failedSubmit, setFailedSubmit ] = useState('');
   const history = useHistory();
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const initialValues = {
     name: '',

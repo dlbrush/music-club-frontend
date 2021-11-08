@@ -32,7 +32,12 @@ const ClubPosts = ({ club }) => {
   return (
     <div className="ClubPosts mt-3">
       <h2>Posts</h2>
-      <PostList posts={clubPosts} />
+      {clubPosts.length > 0 &&
+        <PostList posts={clubPosts} />
+      }
+      {!clubPosts.length &&
+        <p>No posts yet!</p>
+      }
     </div>
   );
 }

@@ -44,7 +44,7 @@ class API {
 
   static async logout() {
     try {
-      const response = await axios.post(`${API_URI}/auth/logout`, { withCredentials: true });
+      const response = await axios.post(`${API_URI}/auth/logout`);
       return response.data.message
     } catch (e) {
       const { message, status } = e.response.data.error;
@@ -76,6 +76,16 @@ class API {
     try {
       const response = await axios.get(`${API_URI}/posts?clubId=${id}`, { withCredentials: true });
       return response.data.posts;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async getClubInvitations(id) {
+    try {
+      const response = await axios.get(`${API_URI}/clubs/${id}/invitations`, { withCredentials: true });
+      return response.data.invitations;
     } catch(e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);
@@ -166,6 +176,26 @@ class API {
     try {
       const response = await axios.get(`${API_URI}/users/${username}`, { withCredentials: true});
       return response.data.user;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async searchUsers(username) {
+    try {
+      const response = await axios.get(`${API_URI}/users?username=${username}`, { withCredentials: true});
+      return response.data.users;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async sendInvite(username, clubId) {
+    try {
+      const response = await axios.post(`${API_URI}/invitations`, {username, clubId}, { withCredentials: true});
+      return response.data.invitation;
     } catch(e) {
       const { message, status } = e.response.data.error;
       throw new APIError(status, message);

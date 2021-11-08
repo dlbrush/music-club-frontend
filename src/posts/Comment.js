@@ -6,7 +6,7 @@ import EditCommentForm from "../forms/EditCommentForm";
 const Comment = ({ comment, deleteComment, editComment }) => {
   const postedAtDate = new Date(comment.postedAt);
   const [ editMode, setEditMode ] = useState(false);
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const ownPost = user.username === comment.username;
 
   if (editMode) return (

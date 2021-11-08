@@ -4,7 +4,7 @@ import UserPostControls from "./UserPostControls";
 import UserContext from "../contexts/userContext";
 
 const Post = ({ post, setPost }) => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const ownPost = post.postedBy === user.username;
   const postedAt = new Date(post.postedAt);
 

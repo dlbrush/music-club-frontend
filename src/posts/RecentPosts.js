@@ -6,7 +6,7 @@ import API from "../api";
 const RecentPosts = () => {
   const [ posts, setPosts ] = useState([]);
   const [ loading, setLoading ] = useState(true);
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   
   useEffect(() => {
     const getPosts = async () => {
@@ -21,15 +21,15 @@ const RecentPosts = () => {
     getPosts();
   }, [user]);
 
-  if (loading) return <h1>Loading posts...</h1>
+  if (loading) return <h1 className="col-md-9 col-lg-10">Loading posts...</h1>
 
   return (
     <main className="RecentPosts col-md-9 col-lg-10">
-      <h1 className="mt-4 border-bottom border-dark pb-2">Recent Posts</h1>
+      <h1 className="mt-4 border-bottom border-dark pb-2">Recent Posts from your clubs</h1>
       {!posts.length &&
-        <h2>No recent posts! Join clubs to see posts.</h2>
+        <p>No recent posts! Join clubs to see posts.</p>
       }
-      {posts.length &&
+      {posts.length > 0 &&
         <PostList posts={posts} showClub={true}/>
       }
     </main>

@@ -5,7 +5,7 @@ import UserContext from './contexts/userContext';
 import { useContext } from 'react';
 
 const Header = () => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   // Some extra styling around the header here - the goal is a colored dot between the two words
   return (

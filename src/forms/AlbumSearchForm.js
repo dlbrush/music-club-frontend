@@ -10,11 +10,11 @@ const AlbumSearchForm = ({ setSearchResults }) => {
     title: '',
   }
 
-  const onSubmit = async (values, {setSubmitting}) => {
+  const onSubmit = async (values, {setSubmitting, resetForm}) => {
     try {
       const albums = await API.albumSearch(values.title, values.artist); 
-      console.log(albums);
       setSearchResults(albums);
+      resetForm(initialValues);
     } catch(e) {
       setFailedSubmit(e.message);
     }

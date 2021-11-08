@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import API from "../api";
 
 const useAuth = () => {
-  const [ user, setUser ] = useState(null);
+  const [ username, setUsername ] = useState(null);
   const [ authenticating, setAuthenticating ] = useState(true);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const user = await API.checkAuth();
-        setUser(user);
+        const { username } = await API.checkAuth();
+        setUsername(username);
       } catch (e) {
         console.warn(e);
       };
@@ -21,8 +21,8 @@ const useAuth = () => {
 
   const login = async (creds) => {
     try {
-      const user = await API.login(creds);
-      setUser(user);
+      const { username } = await API.login(creds);
+      setUsername(username);
     } catch(e) {
       throw e;
     }
@@ -30,8 +30,8 @@ const useAuth = () => {
 
   const register = async (data) => {
     try {
-      const user = await API.register(data);
-      setUser(user);
+      const { username } = await API.register(data);
+      setUsername(username);
     } catch(e) {
       throw e
     }
@@ -39,8 +39,8 @@ const useAuth = () => {
 
   const logout = async () => {
     try {
-      const message = await API.logout();
-      setUser(null);
+      await API.logout();
+      setUsername(null);
     } catch(e) {
       throw e
     }
@@ -48,7 +48,7 @@ const useAuth = () => {
 
   return {
     authenticating,
-    user,
+    username,
     login,
     register,
     logout
