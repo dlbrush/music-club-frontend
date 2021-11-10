@@ -41,7 +41,7 @@ const EditProfileForm = () => {
       if (!values.profileImgUrl) {
         delete values.profileImgUrl;
       }
-      const { email, profileImgUrl } = API.editUser(user.username, values);
+      const { email, profileImgUrl } = await API.editUser(user.username, values);
       await editUser(email, profileImgUrl);
       setSuccessSubmit(true);
     } catch(e) {

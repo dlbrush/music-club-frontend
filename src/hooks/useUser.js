@@ -6,7 +6,6 @@ const useUser = (username, authenticating) => {
   const [ loadingUser, setLoadingUser ] = useState(true);
 
   useEffect(() => {
-    console.log('useUser thinks username:', username, 'authenticating:', authenticating);
     // Do nothing until the authentication process is finished
     if (!username || authenticating) {
       setUser(null);
@@ -18,7 +17,6 @@ const useUser = (username, authenticating) => {
       setLoadingUser(true);
       try {
         const user = await API.getUser(username);
-        console.log(user);
         setUser(user);
       } catch(e) { 
         console.error(e);

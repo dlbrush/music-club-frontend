@@ -3,6 +3,7 @@ import './Header.css';
 import UserContext from './contexts/userContext';
 
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -17,7 +18,7 @@ const Header = () => {
         </span>
         CLUB
       </a>
-      {user && <p className="Header-user">Logged in as {user.username}</p>}
+      {user && <p className="Header-user">Logged in as <Link to='/profile'>{user.username}</Link></p>}
     </header>
   )
 }
