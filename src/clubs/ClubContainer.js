@@ -13,20 +13,19 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(false);
   const [ club, setClub ] = useState({});
-  const { user, addClub, removeInvitation } = useContext(UserContext);
+  const [ isMember, setIsMember ] = useState(false);
+  const [ isFounder, setIsFounder ] = useState(false);
+  const { user, addClub, removeInvitation, editUserClub, deleteUserClub } = useContext(UserContext);
 
   const foundedDate = new Date(club.founded);
-
-  let isMember = false;
-  if (!loading) {
-    isMember = Boolean(club.members.find(member => member.username === user.username));
-  }
   
   useEffect(() => {
     const getClub = async () => {
       try {
         const club = await API.getClub(clubId);
         setClub(club);
+        setIsMember(Boolean(club.members.find(member => member.username === user.username)));
+        setIsFounder(club.founder === user.username);
       } catch(e) {
         console.warn(e);
         setError(true);
@@ -34,11 +33,11 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
       setLoading(false);
     }
     getClub();
-  }, [clubId]);
+  }, [clubId, user]);
 
   const joinClub = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       await API.joinClub(user.username, club.id);
       setClub(club => {
         club.members.push(user);
@@ -50,6 +49,27 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
       console.warn(e);
     }
     setLoading(false);
+  }
+
+  const editClub = async (clubData) => {
+    setLoading(true);
+    try {
+      const editedClub = await API.editClub(club.id, clubData);
+      setClub(editedClub);
+      editUserClub(editedClub);
+    } catch(e) {
+      console.warn(e);
+    }
+    setLoading(false);
+  }
+
+  const deleteClub = async () => {
+    try {
+      await API.deleteClub(club.id);
+      deleteUserClub(club.id);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   // Show loading screen until loading is finished
@@ -70,8 +90,8 @@ const ClubContainer = ({ clubId, ContentComponent }) => {
       {!isMember &&
         <button onClick={joinClub} className="btn btn-success mb-3">Join Club</button>
       }
-      <ClubNav club={club} isMember={isMember}/>
-      <ContentComponent club={club} isMember={isMember}/>
+      <ClubNav club={club} isMember={isMember} isFounder={isFounder}/>
+      <ContentComponent club={club} isMember={isMember} editClub={editClub} deleteClub={deleteClub}/>
     </main>
   )
 }

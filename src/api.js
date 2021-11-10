@@ -52,6 +52,16 @@ class API {
     }
   }
 
+  static async editUser(username, data) {
+    try {
+      const response = await axios.patch(`${API_URI}/users/${username}`, data, {withCredentials: true});
+      return response.data.user
+    } catch (e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
   static async getPublicClubs() {
     try {
       const response = await axios.get(`${API_URI}/clubs?isPublic=true`, { withCredentials: true });
@@ -105,6 +115,26 @@ class API {
   static async joinClub(username, clubId) {
     try {
       const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
+      return response.data.message;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async editClub(clubId, data) {
+    try {
+      const response = await axios.patch(`${API_URI}/clubs/${clubId}`, data, { withCredentials: true});
+      return response.data.club;
+    } catch(e) {
+      const { message, status } = e.response.data.error;
+      throw new APIError(status, message);
+    }
+  }
+
+  static async deleteClub(clubId) {
+    try {
+      const response = await axios.delete(`${API_URI}/clubs/${clubId}`, { withCredentials: true});
       return response.data.message;
     } catch(e) {
       const { message, status } = e.response.data.error;

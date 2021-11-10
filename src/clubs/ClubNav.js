@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
-const ClubNav = ({ club, isMember }) => {
+const ClubNav = ({ club, isMember, isFounder }) => {
+  console.log(isFounder);
   return (
     <nav className="ClubNav list-group list-group-horizontal text-center">
       <NavLink className="list-group-item list-group-item-action" exact to={`/clubs/${club.id}/posts`}>
@@ -18,6 +19,11 @@ const ClubNav = ({ club, isMember }) => {
           Invite Users
           </NavLink>
         </>
+      }
+      {isFounder && 
+        <NavLink className="list-group-item list-group-item-action" exact to={`/clubs/${club.id}/edit`}>
+          Edit club
+        </NavLink>
       }
     </nav>
   )

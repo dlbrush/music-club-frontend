@@ -25,7 +25,7 @@ const RecentPosts = () => {
 
   return (
     <main className="RecentPosts col-md-9 col-lg-10">
-      <h1 className="mt-4 border-bottom border-dark pb-2">Recent Posts from your clubs</h1>
+      <h1 className="mt-4 border-bottom border-dark pb-2">Recent posts from your clubs</h1>
       {!posts.length &&
         <p>No recent posts! Join clubs to see posts.</p>
       }

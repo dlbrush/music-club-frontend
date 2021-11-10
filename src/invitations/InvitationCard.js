@@ -21,15 +21,31 @@ const InvitationCard = ({ invitation }) => {
     }
   }
 
+  const cardStyle = {
+    backgroundImage: `url("${invitation.club.bannerImgUrl}")`,
+    'background-size': '100%'
+  };
+  const contentStyle = {
+    "background-color": "rgba(255, 255, 255, 0.7)"
+  }
+
   return (
-    <li className="InvitationList list-group-item row d-flex" style={{backgroundImage: `url("${invitation.club.backgroundImageUrl}")`}}>
-      <div className="InvitationList-left col-8">
-        <p>{invitation.username} invited you to</p>
-        <p className="h4">{invitation.club.name}</p>
-        <p>{invitation.club.description}</p>
-      </div>
-      <div className="InvitationList-right col-4 mx-auto my-auto">
-        <button disabled={joining} onClick={joinClub} className="d-block btn btn-success">Join Club</button>
+    <li className="InvitationList list-group-item my-1" style={cardStyle}>
+      <div className="flex-row d-flex justify-content-between align-items-center p-2" style={contentStyle}>  
+        <div className="InvitationList-left">
+          <div className="mt-3">
+            <p className="bg-dark p-1 text-white d-inline-block">{invitation.username} invited you to</p>
+          </div>
+          <div className="mb-1">
+            <p className="h4 bg-dark p-1 text-white d-inline-block">{invitation.club.name}</p>
+          </div>
+          <div>
+            <p className="bg-dark p-1 text-white d-inline-block">{invitation.club.description}</p>
+          </div>
+        </div>
+        <div className="InvitationList-right">
+          <button disabled={joining} onClick={joinClub} className="d-block btn btn-success btn-lg">Join Club</button>
+        </div>
       </div>
     </li>
   )

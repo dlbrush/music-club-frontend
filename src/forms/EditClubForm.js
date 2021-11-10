@@ -1,21 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
 
-import API from '../api';
-import UserContext from '../contexts/userContext';
-
-const NewClubForm = () => {
+const EditClubForm = ({ club, editClub }) => {
   const [ failedSubmit, setFailedSubmit ] = useState('');
   const history = useHistory();
-  const { user } = useContext(UserContext);
 
-  const initialValues = {
-    name: '',
-    description: '',
-    bannerImgUrl: '',
-    isPublic: "false"
-  }
+  const { name, description, bannerImgUrl } = club;
+  const initialValues = { name, description, bannerImgUrl };
 
   const validate = values => {
     const errors = {};
@@ -37,9 +29,8 @@ const NewClubForm = () => {
 
   const onSubmit = async (values, {setSubmitting}) => {
     try {
-      values.founder = user.username;
-      const newClub = await API.newClub(values);
-      history.push(`/clubs/${newClub.id}/posts`);
+      await editClub(values);
+      history.push(`/clubs/${club.id}`)
     } catch(e) {
       setFailedSubmit(e.message);
     }
@@ -53,7 +44,7 @@ const NewClubForm = () => {
             onSubmit={onSubmit}
             validate={validate}
     >
-      {({ isSubmitting, values }) => (
+      {({ isSubmitting }) => (
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="name" className="mt-2">Name</label>
@@ -64,20 +55,8 @@ const NewClubForm = () => {
           <ErrorMessage name="bannerImgUrl" render={renderError}/>
           <label htmlFor="description" className="mt-2">Description</label>
           <Field as="textarea" className="form-control" name="description"/>
-          <fieldset className="mt-3" role="group">
-            <legend>Set club privacy</legend>
-            <p id="describe-public">Public clubs will be shown to all users. Any user can join.</p>
-            <label className="me-4">
-              <Field type="radio" className="form-check-input me-1" name="isPublic" id="private" value="false" checked={values.isPublic === 'false'} />
-              Private
-            </label>
-            <label>
-              <Field type="radio" className="form-check-input me-1" name="isPublic" id="public" value="true" checked={values.isPublic === 'true'} />
-              Public
-            </label>
-          </fieldset>
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting}>Create Club</button>
+            <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting}>Update Club</button>
           </div>
         </Form>
       )}
@@ -85,4 +64,4 @@ const NewClubForm = () => {
   )
 }
 
-export default NewClubForm;
+export default EditClubForm;

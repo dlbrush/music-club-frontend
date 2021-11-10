@@ -1,28 +1,24 @@
-import AuthContext from '../contexts/authContext';
-
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useContext, useState } from 'react';
-import { useHistory } from 'react-router';
 
-const RegisterForm = () => {
-  const { register } = useContext(AuthContext);
+import UserContext from '../contexts/userContext';
+import API from '../api';
+
+// Note that profile img is required in this form where it's optional on registration - We can provide a default on registration but can't let the user nullify their existing profile image
+const EditProfileForm = () => {
+  const { user, editUser } = useContext(UserContext);
   const [ failedSubmit, setFailedSubmit ] = useState('');
-  const history = useHistory();
+  const [ successSubmit, setSuccessSubmit ] = useState(false);
 
   const initialValues = {
-    username: '',
-    password: '',
-    email: '',
-    profileImgUrl: ''
+    email: user.email,
+    profileImgUrl: user.profileImgUrl
   }
 
   const validate = values => {
     const errors = {};
-    const imgUrlPattern = /^https*:\/\/.+\/.+(.jpg|.jpeg|.png|.gif)/;
+    const imgUrlPattern = /^https*:\/\/.+\/.+((.jpg|.jpeg|.png|.gif)$)/;
     const emailPattern = /.+@.+\..+/;
-    if (values.username.length > 25) {
-      errors.username = 'Username must be less than 25 characters';
-    }
     if (values.email && !emailPattern.test(values.email)) {
       errors.email = 'Invalid email address format. Example: example@gmail.com'
     }
@@ -31,24 +27,23 @@ const RegisterForm = () => {
       errors.profileImgUrl = 'Invalid profile URL format. URL must point to a valid .jpg, .jpeg, .png, or .gif file. Example: http://example.com/example.jpg'
     }
     for (const value in values) {
-      if (!values[value] && value !== 'profileImgUrl') {
-        errors[value] = 'This field is required'
+      if(!values[value]) {
+        errors[value] = 'This field is required.';
       }
     }
     return errors
   }
 
   const onSubmit = async (values, {setSubmitting}) => {
-    // try to log in
-    // on success, set user to returned user
+    setSuccessSubmit(false);
     try {
-      // Exclude profile image value if left blank
-      console.log(values);
+      // Don't include profile img if empty
       if (!values.profileImgUrl) {
         delete values.profileImgUrl;
       }
-      await register(values); 
-      history.push('/');
+      const { email, profileImgUrl } = API.editUser(user.username, values);
+      await editUser(email, profileImgUrl);
+      setSuccessSubmit(true);
     } catch(e) {
       setFailedSubmit(e.message);
     }
@@ -65,20 +60,15 @@ const RegisterForm = () => {
       {({ isSubmitting }) => (
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
-          <label htmlFor="username" className="mt-2">Username (required)</label>
-          <Field className="form-control" type="text" name="username"/>
-          <ErrorMessage name="username" render={renderError}/>
-          <label htmlFor="password" className="mt-2">Password (required)</label>
-          <Field className="form-control" type="password" name="password"/>
-          <ErrorMessage name="password" render={renderError}/>
+          {successSubmit && <div className="alert alert-success">Successfully updated your profile.</div>}
           <label htmlFor="email" className="mt-2">Email Address (required)</label>
           <Field className="form-control" type="email" name="email" autoComplete="email"/>
           <ErrorMessage name="email" render={renderError}/>
-          <label htmlFor="profileImgUrl" className="mt-2">Profile Image URL (Optional, default image will be provided if blank)</label>
+          <label htmlFor="profileImgUrl" className="mt-2">Profile Image URL (Required)</label>
           <Field className="form-control" type="text" name="profileImgUrl"/>
           <ErrorMessage name="profileImgUrl" render={renderError}/>
           <div className="d-grid mt-2">
-            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Register</button>
+            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Update profile</button>
           </div>
         </Form>
       )}
@@ -86,4 +76,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm;
+export default EditProfileForm;

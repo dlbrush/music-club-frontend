@@ -11,6 +11,8 @@ import MyClubs from '../clubs/MyClubs';
 import NewClub from '../clubs/NewClub';
 import InviteUsers from '../clubs/InviteUsers';
 import MyInvitations from '../invitations/MyInvitations';
+import EditClub from '../clubs/EditClub';
+import EditProfile from '../users/EditProfile';
 
 const AuthRoutes = () => {
   return (
@@ -23,6 +25,9 @@ const AuthRoutes = () => {
       </Route>
       <Route exact path='/users/:username/invitations'>
         <MyInvitations />
+      </Route>
+      <Route exact path='/profile'>
+        <EditProfile />
       </Route>
       <Route exact 
              path='/users/:username/clubs' 
@@ -70,6 +75,12 @@ const AuthRoutes = () => {
              path='/clubs/:clubId/invite-users' 
              render={({match}) => {
               return <ClubContainer clubId={match.params.clubId} ContentComponent={InviteUsers}/>
+             }
+      }/>
+      <Route exact 
+             path='/clubs/:clubId/edit' 
+             render={({match}) => {
+              return <ClubContainer clubId={match.params.clubId} ContentComponent={EditClub}/>
              }
       }/>
       <Route exact path='/new-club'>

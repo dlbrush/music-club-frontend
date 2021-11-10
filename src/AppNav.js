@@ -35,13 +35,16 @@ const AppNav = () => {
               My Clubs
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to={`/users/${user.username}/invitations`}>
-              Invitations  <span class={`badge bg-${badgeColor} pt-1 pb-1 ms-2`}>{user.invitations.length}</span>
+              Invitations  <span className={`badge bg-${badgeColor} pt-1 pb-1 ms-2`}>{user.invitations.length}</span>
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/public-clubs'>
               Public Clubs
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/new-club'>
               Start a Club
+            </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/profile'>
+              Edit Profile
             </NavLink>
             <LogoutButton />
           </ul>
