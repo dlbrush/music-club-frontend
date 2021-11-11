@@ -1,22 +1,6 @@
-import { useContext } from "react";
-import { useHistory } from "react-router";
-import AuthContext from "../contexts/authContext";
-
 const LogoutButton = () => {
-  const auth = useContext(AuthContext);
-  const history = useHistory();
-
-  const logout = async () => {
-    try {
-      await auth.logout();
-      history.push('/');
-    } catch(e) {
-      console.error(e);
-    }
-  }
-
   return (
-    <button className="list-group-item list-group-item-action" onClick={logout}>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#logoutModal" className="list-group-item list-group-item-action">
       Log Out
     </button>
   )

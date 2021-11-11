@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import UserContext from './contexts/userContext';
 import LogoutButton from './auth/LogoutButton';
+import LogoutModal from './auth/LogoutModal';
 
 const AppNav = () => {
   const { user } = useContext(UserContext);
@@ -47,6 +48,7 @@ const AppNav = () => {
               Edit Profile
             </NavLink>
             <LogoutButton />
+            <LogoutModal />
           </ul>
         }
     </nav>
