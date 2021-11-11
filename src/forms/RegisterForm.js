@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
   const validate = values => {
     const errors = {};
-    const imgUrlPattern = /^https*:\/\/.+\/.+(.jpg|.jpeg|.png|.gif)/;
+    const urlPattern = /^https*:\/\//;
     const emailPattern = /.+@.+\..+/;
     if (values.username.length > 25) {
       errors.username = 'Username must be less than 25 characters';
@@ -27,8 +27,8 @@ const RegisterForm = () => {
       errors.email = 'Invalid email address format. Example: example@gmail.com'
     }
     // Only show error on URL if the user has input one, since it is not required
-    if (values.profileImgUrl && !imgUrlPattern.test(values.profileImgUrl)) {
-      errors.profileImgUrl = 'Invalid profile URL format. URL must point to a valid .jpg, .jpeg, .png, or .gif file. Example: http://example.com/example.jpg'
+    if (values.profileImgUrl && !urlPattern.test(values.profileImgUrl)) {
+      errors.profileImgUrl = 'Invalid profile URL format. URL must be valid. Example: http://example.com/example.jpg'
     }
     for (const value in values) {
       if (!values[value] && value !== 'profileImgUrl') {

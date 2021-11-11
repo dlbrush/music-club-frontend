@@ -19,13 +19,13 @@ const NewClubForm = () => {
 
   const validate = values => {
     const errors = {};
-    const imgUrlPattern = /^https*:\/\/.+\/.+(.jpg|.jpeg|.png|.gif)/;
+    const urlPattern = /^https*:\/\//;
     if (values.name.length > 30) {
       errors.name = 'Name must be less than 30 characters';
     }
     // Only show error on URL if the user has input one, since it is not required
-    if (values.bannerImgUrl && !imgUrlPattern.test(values.bannerImgUrl)) {
-      errors.bannerImgUrl = 'Invalid banner URL format. URL must point to a valid .jpg, .jpeg, .png, or .gif file. Example: http://example.com/example.jpg'
+    if (values.bannerImgUrl && !urlPattern.test(values.bannerImgUrl)) {
+      errors.bannerImgUrl = 'Invalid banner URL format. URL must be valid. Example: http://example.com/example.jpg'
     }
     for (const value in values) {
       if (!values[value] && value !== 'bannerImgUrl') {
