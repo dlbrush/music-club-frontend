@@ -6,10 +6,10 @@ const ClubList = ({ clubs }) => {
       {clubs.map(club => {
         const cardStyle = {
           backgroundImage: `url("${club.bannerImgUrl}")`,
-          'background-size': '100%'
+          'backgroundSize': '100%'
         };
         const contentStyle = {
-          "background-color": "rgba(255, 255, 255, 0.7)"
+          "backgroundColor": "rgba(255, 255, 255, 0.7)"
         }
         return (
           <Link to={`/clubs/${club.id}`} key={club.id} className="my-1 list-group-item list-group-item-action" style={cardStyle}>

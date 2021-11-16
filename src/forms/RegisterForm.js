@@ -39,11 +39,8 @@ const RegisterForm = () => {
   }
 
   const onSubmit = async (values, {setSubmitting}) => {
-    // try to log in
-    // on success, set user to returned user
     try {
       // Exclude profile image value if left blank
-      console.log(values);
       if (!values.profileImgUrl) {
         delete values.profileImgUrl;
       }

@@ -44,7 +44,7 @@ class API {
 
   static async logout() {
     try {
-      const response = await axios.post(`${API_URI}/auth/logout`);
+      const response = await axios.post(`${API_URI}/auth/logout`, {}, { withCredentials: true });
       return response.data.message
     } catch (e) {
       const { message, status } = e.response.data.error;
@@ -54,7 +54,7 @@ class API {
 
   static async editUser(username, data) {
     try {
-      const response = await axios.patch(`${API_URI}/users/${username}`, data, {withCredentials: true});
+      const response = await axios.patch(`${API_URI}/users/${username}`, data, { withCredentials: true });
       return response.data.user
     } catch (e) {
       const { message, status } = e.response.data.error;
@@ -114,7 +114,7 @@ class API {
 
   static async joinClub(username, clubId) {
     try {
-      const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, { withCredentials: true});
+      const response = await axios.post(`${API_URI}/users/${username}/join-club/${clubId}`, {}, { withCredentials: true});
       return response.data.message;
     } catch(e) {
       const { message, status } = e.response.data.error;

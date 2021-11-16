@@ -7,7 +7,6 @@ import LogoutModal from './auth/LogoutModal';
 
 const AppNav = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
   let badgeColor;
   if (user) {
     badgeColor = user.invitations.length > 0 ? 'danger' : 'secondary';

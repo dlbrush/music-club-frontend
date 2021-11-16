@@ -7,8 +7,7 @@ import useAuth from './hooks/useAuth';
 import useUser from './hooks/useUser';
 
 // Boostrap just needs to be imported here so JS for modals is available
-import bootstrap from 'bootstrap';
-import { BrowserRouter } from 'react-router-dom';
+import 'bootstrap';
 
 function App() {
 
@@ -22,10 +21,8 @@ function App() {
     {!user.loadingUser &&
       <AuthContext.Provider value={auth}>
         <UserContext.Provider value={user}>
-          <BrowserRouter>
-            <Header />
-            <Body />
-          </BrowserRouter>
+          <Header />
+          <Body />
         </UserContext.Provider>
       </AuthContext.Provider>
     }
