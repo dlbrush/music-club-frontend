@@ -19,19 +19,19 @@ const LogoutModal = () => {
   }
 
   return (
-    <div className="modal fade" id="logoutModal" tabIndex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div className="modal fade" id="logoutModal" tabIndex="-1" data-testid="logoutModal" aria-labelledby="logoutLabel" aria-hidden="true">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="logoutLabel">Log out</h5>
+            <h5 className="modal-title" id="logoutLabel">Log Out</h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
             Are you sure you want to log out?
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" className="btn btn-danger" disabled={disabled} data-bs-dismiss="modal" onClick={onClick}>Log Out</button>
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" data-testid="Logout-modal-cancel" >Cancel</button>
+            <button type="button" className="btn btn-danger" disabled={disabled} data-bs-dismiss="modal" data-testid="Logout-modal-button" onClick={onClick}>Log Out</button>
           </div>
         </div>
       </div>

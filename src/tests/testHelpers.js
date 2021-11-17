@@ -11,3 +11,8 @@ export const testUserContext = {
   user: testUser,
   editUser: jest.fn((user) => user)
 }
+
+export const testAuthContext = {
+  login: jest.fn((creds) => creds),
+  logout: jest.fn(() => true)
+}
