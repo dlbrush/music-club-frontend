@@ -10,7 +10,7 @@ const Header = () => {
 
   // Some extra styling around the header here - the goal is a colored dot between the two words
   return (
-    <header className="Header mt-4 border-bottom border-dark d-flex justify-content-between">
+    <header className="Header mt-4 border-bottom border-dark d-flex justify-content-between" data-testid="Header">
       <a className="Header-link display-3 fw-bold mb-0 text-reset" href='/'>
         MUSIC
         <span className="text-primary">

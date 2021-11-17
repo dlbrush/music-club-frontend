@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App container px-md-2 px-lg-5">
     {auth.authenticating && <h1>Checking login...</h1>}
-    {(!auth.authenticating && user.loadingUser) && <h1>Checking login...</h1>}
+    {(!auth.authenticating && user.loadingUser) && <h1>Loading...</h1>}
     {!user.loadingUser &&
       <AuthContext.Provider value={auth}>
         <UserContext.Provider value={user}>

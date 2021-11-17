@@ -1,20 +1,11 @@
 import axios from 'axios';
 
-const API_URI = process.env.API_URI || 'http://localhost:3000';
+export const API_URI = process.env.API_URI || 'http://localhost:3000';
 
 class API {
-  static async handleRequest (requestFunction) {
-    try {
-      requestFunction();
-    } catch (e) {
-      const { message, status } = e.response.data.error;
-      throw new APIError(status, message);
-    }
-  }
-
   static async checkAuth () {
     try {
-      const response = await axios.post(`${API_URI}/auth/check`, {}, {withCredentials: true});
+      const response = await axios.post(`${API_URI}/auth/check`, {}, { withCredentials: true });
       return response.data.user;
     } catch (e) {
       const { message, status } = e.response.data.error;
@@ -263,7 +254,7 @@ class API {
   }
 }
 
-class APIError extends Error {
+export class APIError extends Error {
   constructor(status, message) {
     super(`${status}: ${message}`);
     console.warn(this, message);
