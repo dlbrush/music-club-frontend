@@ -24,7 +24,7 @@ const EditProfileForm = () => {
     }
     // Only show error on URL if the user has input one, since it is not required
     if (values.profileImgUrl && !urlPattern.test(values.profileImgUrl)) {
-      errors.profileImgUrl = 'Invalid profile URL format. URL must point to a valid .jpg, .jpeg, .png, or .gif file. Example: http://example.com/example.jpg'
+      errors.profileImgUrl = 'Invalid profile URL format. Example: http://example.com/example.jpg'
     }
     for (const value in values) {
       if(!values[value]) {
@@ -62,10 +62,10 @@ const EditProfileForm = () => {
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           {successSubmit && <div className="alert alert-success">Successfully updated your profile.</div>}
           <label htmlFor="email" className="mt-2">Email Address (required)</label>
-          <Field className="form-control" type="email" name="email" autoComplete="email"/>
+          <Field id="email" className="form-control" type="email" name="email" autoComplete="email"/>
           <ErrorMessage name="email" render={renderError}/>
           <label htmlFor="profileImgUrl" className="mt-2">Profile Image URL (Required)</label>
-          <Field className="form-control" type="text" name="profileImgUrl"/>
+          <Field id="profileImgUrl" className="form-control" type="text" name="profileImgUrl"/>
           <ErrorMessage name="profileImgUrl" render={renderError}/>
           <div className="d-grid mt-2">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Update profile</button>

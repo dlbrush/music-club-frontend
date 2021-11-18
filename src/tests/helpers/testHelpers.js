@@ -48,6 +48,7 @@ export const testInvitations = [
 export const testUser = {
   username: 'test1',
   profileImgUrl: defaultProfileImg,
+  email: 'test@test.com',
   invitations: [{
     username: 'test1',
     clubId: 1,
@@ -61,6 +62,7 @@ export const testUser = {
 
 export const testUser2 = {
   username: 'test2',
+  email: 'test2@test.com',
   profileImgUrl: defaultProfileImg,
   invitations: []
 };

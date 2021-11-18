@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import API from '../../api';
 import EditCommentForm from '../../forms/EditCommentForm';
-import { testComment1, testUser1 } from '../helpers/testHelpers';
+import { testComment1 } from '../helpers/testHelpers';
 
 jest.mock('../../api');
 
