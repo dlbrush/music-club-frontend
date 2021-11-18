@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import API from '../api';
 import DeletePostButton from '../posts/DeletePostButton';
 
-const NewPostForm = ({ post }) => {
+const EditPostForm = ({ post }) => {
   const [ failedSubmit, setFailedSubmit ] = useState('');
   const history = useHistory();
 
@@ -32,9 +32,9 @@ const NewPostForm = ({ post }) => {
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="content" className="mt-2">Say something about this album</label>
-          <Field as="textarea" className="form-control" name="content"/>
+          <Field id="content" as="textarea" className="form-control" name="content"/>
           <label htmlFor="recTracks" className="mt-2">Recommended tracks</label>
-          <Field className="form-control mb-3" type="text" name="recTracks"/>
+          <Field id="recTracks" className="form-control mb-3" type="text" name="recTracks"/>
           <button type="submit" className="btn btn-primary me-3" disabled={isSubmitting}>Edit Post</button>
           <DeletePostButton clubId={post.clubId} postId={post.id} />
         </Form>
@@ -43,4 +43,4 @@ const NewPostForm = ({ post }) => {
   )
 }
 
-export default NewPostForm;
+export default EditPostForm;

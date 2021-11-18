@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 
 import API from '../api';
@@ -23,16 +23,28 @@ const EditCommentForm = ({ comment, editComment, setEditMode }) => {
     }
   }
 
+  const validate = values => {
+    const errors = {};
+    if (!values.comment) {
+      errors.comment = "Can't submit empty comment"
+    }
+    return errors
+  }
+
+  const renderError = msg => <div className="mt-1 text-danger">{msg}</div>
+
   return (
     <Formik initialValues={initialValues}
             onSubmit={onSubmit}
+            validate={validate}
     >
       {({ isSubmitting }) => (
         <Form className="CommentForm row p-2 align-items-center justify-content-center">
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <div className="col-10">
             <label htmlFor="comment">Edit Comment:</label>
-            <Field as="textarea" className="form-control" name="comment"/>
+            <Field id="comment" as="textarea" className="form-control" name="comment"/>
+            <ErrorMessage name="comment" render={renderError}/>
           </div>
           <div className="col-2 jutify-content-center">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Update</button>

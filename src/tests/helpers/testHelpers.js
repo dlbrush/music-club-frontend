@@ -70,3 +70,26 @@ export const testUserContext = {
   editUser: jest.fn(user => user),
   deleteUserClub: jest.fn(club => club)
 }
+
+export const testComment1 = {
+  username: 'test1',
+  comment: 'comment',
+  postId: 1,
+  id: 1,
+  user: testUser
+}
+
+export const testComment2 = {
+  username: 'test2',
+  comment: 'comment again',
+  postId: 1,
+  id: 2,
+  user: testUser2
+}
+
+export const testPost1 = {
+  content: 'content',
+  recTracks: 'recTracks',
+  id: 1,
+  clubId: 1
+}
