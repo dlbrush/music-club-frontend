@@ -48,13 +48,14 @@ const EditClubForm = ({ club, editClub }) => {
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="name" className="mt-2">Name</label>
-          <Field type="text" className="form-control" name="name"/>
+          <Field id="name" type="text" className="form-control" name="name"/>
           <ErrorMessage name="name" render={renderError}/>
           <label htmlFor="bannerImgUrl" className="mt-2">Banner Image URL:</label>
           <Field id="bannerImgUrl" type="text" className="form-control" name="bannerImgUrl"/>
           <ErrorMessage name="bannerImgUrl" render={renderError}/>
           <label htmlFor="description" className="mt-2">Description</label>
-          <Field as="textarea" className="form-control" name="description"/>
+          <Field id="description" as="textarea" className="form-control" name="description"/>
+          <ErrorMessage name="description" render={renderError}/>
           <div className="d-grid">
             <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting}>Update Club</button>
           </div>
