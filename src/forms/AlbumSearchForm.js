@@ -30,11 +30,11 @@ const AlbumSearchForm = ({ setSearchResults }) => {
           {failedSubmit && <div className="alert alert-danger col-12">{failedSubmit}</div>}
           <div className="col-5">
             <label htmlFor="title">Title</label>
-            <Field className="form-control" type="text" name="title"/>
+            <Field className="form-control" type="text" name="title" id="title"/>
           </div>
             <div className="col-5">
             <label htmlFor="artist">Artist</label>
-            <Field className="form-control" type="text" name="artist"/>
+            <Field id="artist" className="form-control" type="text" name="artist"/>
           </div>
           <div className="col-2 align-self-end">
             <button type="submit" className="btn btn-primary " disabled={isSubmitting}>Search</button>
