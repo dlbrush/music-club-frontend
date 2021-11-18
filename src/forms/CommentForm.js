@@ -33,6 +33,7 @@ const CommentForm = ({ postId, addComment }) => {
   return (
     <Formik initialValues={initialValues}
             onSubmit={onSubmit}
+            validate={validate}
             validateOnChange={false}
             validateOnBlur={false}
     >

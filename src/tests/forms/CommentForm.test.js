@@ -36,9 +36,17 @@ describe('CommentForm', () => {
     });
   });
 
+  it('Shows validation error on submitting empty comment', async () => {
+    const { getByText, findByText } = render(<CommentForm postId={1} addComment={mockAddComment}/>);
+    fireEvent.click(getByText('Comment'));
+    await findByText("Can't submit empty comment");
+  });
+
   it('Shows error on failed submit', async () => {
     API.newComment.mockImplementation(() => {throw new Error('Error')});
-    const { getByText, findByText } = render(<CommentForm addComment={mockAddComment}/>);
+    const { getByText, getByLabelText, findByText } = render(<CommentForm addComment={mockAddComment}/>);
+    const commentInput = getByLabelText('Add Comment:');
+    fireEvent.change(commentInput, {target: {value: 'comment'}});
     fireEvent.click(getByText('Comment'));
     const error = await findByText('Error');
     expect(error).toBeInTheDocument();
