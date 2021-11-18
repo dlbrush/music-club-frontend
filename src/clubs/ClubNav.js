@@ -21,7 +21,7 @@ const ClubNav = ({ club, isMember, isFounder }) => {
       }
       {isFounder && 
         <NavLink className="list-group-item list-group-item-action" exact to={`/clubs/${club.id}/edit`}>
-          Edit club
+          Edit Club
         </NavLink>
       }
     </nav>

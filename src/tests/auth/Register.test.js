@@ -2,24 +2,24 @@ import { render } from '@testing-library/react';
 import AuthContext from '../../contexts/authContext';
 import { MemoryRouter } from "react-router";
 import { testAuthContext } from '../helpers/testHelpers';
-import Login from '../../auth/Login';
+import Register from '../../auth/Register';
 
-describe('Login', () => {
-  const renderLogin = () => {
+describe('Register', () => {
+  const renderRegister = () => {
     return render(
       <AuthContext.Provider value={testAuthContext}>
         <MemoryRouter>
-          <Login/>
+          <Register/>
         </MemoryRouter>
       </AuthContext.Provider>
     );
   }
   it('Renders successfully', () => {
-    renderLogin();
+    renderRegister();
   });
 
   it('Maintains rendering', () => {
-    const { asFragment } = renderLogin();
+    const { asFragment } = renderRegister();
     expect(asFragment()).toMatchSnapshot();
   });
 });

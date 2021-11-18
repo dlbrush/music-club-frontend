@@ -33,8 +33,8 @@ const EditClubForm = ({ club, editClub }) => {
       history.push(`/clubs/${club.id}`)
     } catch(e) {
       setFailedSubmit(e.message);
+      setSubmitting(false);
     }
-    setSubmitting(false);
   }
 
   const renderError = msg => <div className="mt-1 text-danger">{msg}</div>
@@ -51,7 +51,7 @@ const EditClubForm = ({ club, editClub }) => {
           <Field type="text" className="form-control" name="name"/>
           <ErrorMessage name="name" render={renderError}/>
           <label htmlFor="bannerImgUrl" className="mt-2">Banner Image URL:</label>
-          <Field type="text" className="form-control" name="bannerImgUrl"/>
+          <Field id="bannerImgUrl" type="text" className="form-control" name="bannerImgUrl"/>
           <ErrorMessage name="bannerImgUrl" render={renderError}/>
           <label htmlFor="description" className="mt-2">Description</label>
           <Field as="textarea" className="form-control" name="description"/>

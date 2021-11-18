@@ -32,7 +32,7 @@ const DeleteClubModal = ({ clubId, deleteClub }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" className="btn btn-danger" disabled={disabled} data-bs-dismiss="modal" onClick={onClick}>Delete Club</button>
+            <button type="button" data-testid="deleteButton2" className="btn btn-danger" disabled={disabled} data-bs-dismiss="modal" onClick={onClick}>Delete Club</button>
           </div>
         </div>
       </div>

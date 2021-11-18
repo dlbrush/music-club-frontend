@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
 import UserContext from '../contexts/userContext';
 import { MemoryRouter } from "react-router";
-import { testUser } from './testHelpers';
+import { testUser } from './helpers/testHelpers';
 import AppNav from '../AppNav';
 
 describe('AppNav', () => {

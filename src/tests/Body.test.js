@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import UserContext from '../contexts/userContext';
 import { MemoryRouter } from "react-router";
-import { testUserContext } from './testHelpers';
+import { testUserContext } from './helpers/testHelpers';
 import Body from '../Body';
 
 describe('Body', () => {

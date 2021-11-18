@@ -1,9 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 import AuthContext from '../../contexts/authContext';
 import { MemoryRouter } from "react-router";
-import { testAuthContext } from '../testHelpers';
+import { testAuthContext } from '../helpers/testHelpers';
 import LogoutModal from '../../auth/LogoutModal';
-import 'bootstrap';
 
 describe('LogoutModal', () => {
   const renderLogoutModal = () => {
