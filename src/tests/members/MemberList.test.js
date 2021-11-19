@@ -11,4 +11,10 @@ describe('MemberList', () => {
     const { asFragment } = render(<MemberList members={[testUser, testUser2]} />);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  it('Renders each member', () => {
+    const { getByText } = render(<MemberList members={[testUser, testUser2]} />);
+    getByText(testUser.username);
+    getByText(testUser2.username);
+  })
 });
