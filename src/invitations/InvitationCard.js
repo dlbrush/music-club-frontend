@@ -12,9 +12,9 @@ const InvitationCard = ({ invitation }) => {
     setJoining(true);
     try {
       await API.joinClub(invitation.username, invitation.clubId);
-      history.push(`/clubs/${invitation.clubId}`);
       addClub(invitation.club);
       removeInvitation(invitation.clubId);
+      history.push(`/clubs/${invitation.clubId}`);
     } catch(e) {
       console.error(e);
       setJoining(false);
@@ -23,10 +23,10 @@ const InvitationCard = ({ invitation }) => {
 
   const cardStyle = {
     backgroundImage: `url("${invitation.club.bannerImgUrl}")`,
-    'background-size': '100%'
+    'backgroundSize': '100%'
   };
   const contentStyle = {
-    "background-color": "rgba(255, 255, 255, 0.7)"
+    "backgroundColor": "rgba(255, 255, 255, 0.7)"
   }
 
   return (

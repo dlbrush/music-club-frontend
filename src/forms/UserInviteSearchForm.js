@@ -28,7 +28,7 @@ const UserInviteSearchForm = ({ searchUsers }) => {
             <label htmlFor="username">Search username:</label>
           </div>
           <div className="col-8">
-            <Field type="text" className="form-control" name="username"/>
+            <Field id="username" type="text" className="form-control" name="username"/>
           </div>
           <div className="col-2">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Search</button>

@@ -39,10 +39,16 @@ export const testClub2 = {
 
 export const testInvitations = [
   {
-    username: 'test3'
+    username: 'test3',
+    clubId: 1,
+    club: testClub1,
+    sentFrom: 'test1'
   },
   {
-    username: 'test4'
+    username: 'test4',
+    clubId: 1,
+    club: testClub1,
+    sentFrom: 'test1'
   }
 ];
 
@@ -71,6 +77,8 @@ export const testUser2 = {
 export const testUserContext = {
   user: testUser,
   editUser: jest.fn(user => user),
+  addClub: jest.fn(club => club),
+  removeInvitation: jest.fn(clubId => clubId),
   deleteUserClub: jest.fn(club => club)
 }
 
