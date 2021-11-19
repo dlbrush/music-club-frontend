@@ -59,7 +59,8 @@ export const testUser = {
   invitations: [{
     username: 'test1',
     clubId: 1,
-    sentFrom: 'test2'
+    sentFrom: 'test2',
+    club: testClub1
   }],
   clubs: [
     testClub1,
