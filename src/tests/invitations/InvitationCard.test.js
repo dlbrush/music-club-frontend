@@ -36,7 +36,7 @@ describe('InvitationCard', () => {
     const { getByText } = renderInvitationCard();
     fireEvent.click(getByText('Join Club'));
     await waitFor(() => {
-      expect(API.joinClub).toHaveBeenCalledWith(testInvitations[0].username, testInvitations[1].clubId);
+      expect(API.joinClub).toHaveBeenCalledWith(testInvitations[0].username, testInvitations[0].clubId);
       expect(testUserContext.addClub).toHaveBeenCalledWith(testInvitations[0].club);
       expect(testUserContext.removeInvitation).toHaveBeenCalledWith(testInvitations[0].clubId);
     })

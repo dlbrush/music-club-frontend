@@ -23,6 +23,12 @@ describe('InvitationList', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('Renders each invitation', () => {
+    const { getByText } = renderInvitationList();
+    getByText('Club');
+    getByText('Club 2');
+  })
+
   it('Renders consistently with no invitations', () => {
     const { asFragment } = render(
       <userContext.Provider value={testUserContext}>

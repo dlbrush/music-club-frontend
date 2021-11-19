@@ -6,7 +6,7 @@ const InvitationList = ({ invitations }) =>{
   return (
     <ul className="InvitationList list-group">
       {invitations.map(invitation => {
-        return <InvitationCard invitation={invitation} />
+        return <InvitationCard key={`${invitation.sentFrom}, ${invitation.clubId}, ${invitation.username}`} invitation={invitation} />
       })}
     </ul>
   )

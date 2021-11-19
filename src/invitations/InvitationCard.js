@@ -34,7 +34,7 @@ const InvitationCard = ({ invitation }) => {
       <div className="flex-row d-flex justify-content-between align-items-center p-2" style={contentStyle}>  
         <div className="InvitationList-left">
           <div className="mt-3">
-            <p className="bg-dark p-1 text-white d-inline-block">{invitation.username} invited you to</p>
+            <p className="bg-dark p-1 text-white d-inline-block">{invitation.sentFrom} invited you to</p>
           </div>
           <div className="mb-1">
             <p className="h4 bg-dark p-1 text-white d-inline-block">{invitation.club.name}</p>

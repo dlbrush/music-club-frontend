@@ -46,8 +46,8 @@ export const testInvitations = [
   },
   {
     username: 'test4',
-    clubId: 1,
-    club: testClub1,
+    clubId: 2,
+    club: testClub2,
     sentFrom: 'test1'
   }
 ];
