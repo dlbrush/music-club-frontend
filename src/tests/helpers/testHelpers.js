@@ -3,6 +3,7 @@ import defaultProfileImg from './defaultProfileImg.jpeg';
 
 export const testAuthContext = {
   login: jest.fn((creds) => creds),
+  register: jest.fn((creds) => creds),
   logout: jest.fn(() => true)
 }
 

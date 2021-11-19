@@ -56,14 +56,14 @@ const NewClubForm = () => {
       {({ isSubmitting, values }) => (
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
-          <label htmlFor="name" className="mt-2">Name</label>
-          <Field type="text" className="form-control" name="name"/>
+          <label htmlFor="name" className="mt-2">Name (Required)</label>
+          <Field id="name" type="text" className="form-control" name="name"/>
           <ErrorMessage name="name" render={renderError}/>
-          <label htmlFor="bannerImgUrl" className="mt-2">Banner Image URL:</label>
-          <Field type="text" className="form-control" name="bannerImgUrl"/>
+          <label htmlFor="bannerImgUrl" className="mt-2">Banner Image URL</label>
+          <Field id="bannerImgUrl" type="text" className="form-control" name="bannerImgUrl"/>
           <ErrorMessage name="bannerImgUrl" render={renderError}/>
-          <label htmlFor="description" className="mt-2">Description</label>
-          <Field as="textarea" className="form-control" name="description"/>
+          <label htmlFor="description" className="mt-2">Description (Required)</label>
+          <Field id="description" as="textarea" className="form-control" name="description"/>
           <fieldset className="mt-3" role="group">
             <legend>Set club privacy</legend>
             <p id="describe-public">Public clubs will be shown to all users. Any user can join.</p>

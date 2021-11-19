@@ -63,16 +63,16 @@ const RegisterForm = () => {
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="username" className="mt-2">Username (required)</label>
-          <Field className="form-control" type="text" name="username"/>
+          <Field id="username" className="form-control" type="text" name="username"/>
           <ErrorMessage name="username" render={renderError}/>
           <label htmlFor="password" className="mt-2">Password (required)</label>
-          <Field className="form-control" type="password" name="password"/>
+          <Field id="password" className="form-control" type="password" name="password"/>
           <ErrorMessage name="password" render={renderError}/>
           <label htmlFor="email" className="mt-2">Email Address (required)</label>
-          <Field className="form-control" type="email" name="email" autoComplete="email"/>
+          <Field id="email" className="form-control" type="email" name="email" autoComplete="email"/>
           <ErrorMessage name="email" render={renderError}/>
           <label htmlFor="profileImgUrl" className="mt-2">Profile Image URL (Optional, default image will be provided if blank)</label>
-          <Field className="form-control" type="text" name="profileImgUrl"/>
+          <Field id="profileImgUrl" className="form-control" type="text" name="profileImgUrl"/>
           <ErrorMessage name="profileImgUrl" render={renderError}/>
           <div className="d-grid mt-2">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Register</button>

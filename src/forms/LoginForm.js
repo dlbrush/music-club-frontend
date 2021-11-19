@@ -51,10 +51,10 @@ const LoginForm = () => {
 
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="username">Username</label>
-          <Field className="form-control" type="text" name="username"/>
+          <Field id="username" className="form-control" type="text" name="username"/>
           <ErrorMessage name="username" render={renderError}/>
           <label htmlFor="password">Password</label>
-          <Field className="form-control" type="password" name="password"/>
+          <Field id="password" className="form-control" type="password" name="password"/>
           <ErrorMessage name="password" render={renderError}/>
           <div className="d-grid mt-2">
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Log in</button>
