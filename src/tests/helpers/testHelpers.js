@@ -103,7 +103,8 @@ export const testPost1 = {
   content: 'content',
   recTracks: 'recTracks',
   id: 1,
-  clubId: 1
+  clubId: 1,
+  comments: [testComment1, testComment2]
 }
 
 export const testSearchAlbum1 = {
