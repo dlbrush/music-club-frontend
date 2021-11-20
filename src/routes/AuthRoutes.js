@@ -13,10 +13,14 @@ import InviteUsers from '../clubs/InviteUsers';
 import MyInvitations from '../invitations/MyInvitations';
 import EditClub from '../clubs/EditClub';
 import EditProfile from '../users/EditProfile';
+import Guide from '../guide/Guide';
 
 const AuthRoutes = () => {
   return (
     <Switch>
+      <Route exact path='/guide'>
+        <Guide />
+      </Route>
       <Route exact path='/recent'>
         <RecentPosts />
       </Route>

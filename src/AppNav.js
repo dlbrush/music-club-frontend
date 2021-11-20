@@ -18,6 +18,9 @@ const AppNav = () => {
             <NavLink className="list-group-item list-group-item-action" exact to='/'>
               Home
             </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/guide'>
+              Guide
+            </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/login'>
               Log in
             </NavLink>
@@ -45,6 +48,9 @@ const AppNav = () => {
             </NavLink>
             <NavLink className="list-group-item list-group-item-action" exact to='/profile'>
               Edit Profile
+            </NavLink>
+            <NavLink className="list-group-item list-group-item-action" exact to='/guide'>
+              Guide
             </NavLink>
             <LogoutButton />
             <LogoutModal />

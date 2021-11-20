@@ -88,7 +88,8 @@ export const testComment1 = {
   comment: 'comment',
   postId: 1,
   id: 1,
-  user: testUser
+  user: testUser,
+  postedAt: Date()
 }
 
 export const testComment2 = {
@@ -96,7 +97,26 @@ export const testComment2 = {
   comment: 'comment again',
   postId: 1,
   id: 2,
-  user: testUser2
+  user: testUser2,
+  postedAt: Date()
+}
+
+export const testSearchAlbum1 = {
+  coverImgUrl: defaultProfileImg,
+  title: 'Album',
+  artist: 'Artist',
+  year: 2000,
+  genres: ['Pop', 'Rock'],
+  id: 1
+}
+
+export const testSearchAlbum2 = {
+  coverImgUrl: defaultProfileImg,
+  title: 'Album 2',
+  artist: 'Artist 2',
+  year: 2002,
+  genres: ['Pop', 'Rock'],
+  id: 2
 }
 
 export const testPost1 = {
@@ -104,19 +124,7 @@ export const testPost1 = {
   recTracks: 'recTracks',
   id: 1,
   clubId: 1,
-  comments: [testComment1, testComment2]
-}
-
-export const testSearchAlbum1 = {
-  coverImgUrl: defaultProfileImg,
-  title: 'Album',
-  year: 2000,
-  id: 1
-}
-
-export const testSearchAlbum2 = {
-  coverImgUrl: defaultProfileImg,
-  title: 'Album 2',
-  year: 2002,
-  id: 2
+  comments: [testComment1, testComment2],
+  album: testSearchAlbum1,
+  postedAt: Date()
 }

@@ -10,10 +10,11 @@ const CommentForm = ({ postId, addComment }) => {
     comment: ''
   }
 
-  const onSubmit = async (values, {setSubmitting}) => {
+  const onSubmit = async (values, {setSubmitting, resetForm}) => {
     try {
       const newComment = await API.newComment(postId, values);
       addComment(newComment);
+      resetForm();
     } catch(e) {
       setFailedSubmit(e.message);
     }
