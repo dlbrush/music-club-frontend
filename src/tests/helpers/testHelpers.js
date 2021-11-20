@@ -106,14 +106,16 @@ export const testPost1 = {
   clubId: 1
 }
 
-export const testAlbum1 = {
+export const testSearchAlbum1 = {
   coverImgUrl: defaultProfileImg,
   title: 'Album',
-  year: 2000
+  year: 2000,
+  id: 1
 }
 
-export const testAlbum2 = {
+export const testSearchAlbum2 = {
   coverImgUrl: defaultProfileImg,
   title: 'Album 2',
-  year: 2002
+  year: 2002,
+  id: 2
 }
