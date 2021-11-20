@@ -105,3 +105,15 @@ export const testPost1 = {
   id: 1,
   clubId: 1
 }
+
+export const testAlbum1 = {
+  coverImgUrl: defaultProfileImg,
+  title: 'Album',
+  year: 2000
+}
+
+export const testAlbum2 = {
+  coverImgUrl: defaultProfileImg,
+  title: 'Album 2',
+  year: 2002
+}

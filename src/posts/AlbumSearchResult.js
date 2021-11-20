@@ -12,7 +12,7 @@ const AlbumSearchResult = ({ album, setCheckedAlbum, checkedAlbum }) => {
   return (
     <button onClick={check} className="d-flex row list-group-item align-items-center">
       <div className="col-1">
-        <input type="radio" className="form-radio-input" checked={checked}/>
+        <input type="radio" data-testid="album-radio" className="form-radio-input" checked={checked}/>
       </div>
       <div className="col-3">
         <img className="img-fluid AlbumSearchResult-cover" src={album.coverImgUrl} alt={`Album cover for ${album.title}`}/>
