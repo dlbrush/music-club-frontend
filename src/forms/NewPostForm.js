@@ -33,9 +33,9 @@ const NewPostForm = ({ discogsId }) => {
         <Form>
           {failedSubmit && <div className="alert alert-danger">{failedSubmit}</div>}
           <label htmlFor="content" className="mt-2">Say something about this album</label>
-          <Field as="textarea" className="form-control" name="content"/>
+          <Field id="content" as="textarea" className="form-control" name="content"/>
           <label htmlFor="recTracks" className="mt-2">Recommended tracks</label>
-          <Field className="form-control" type="text" name="recTracks"/>
+          <Field id="recTracks" className="form-control" type="text" name="recTracks"/>
           <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting}>Post</button>
         </Form>
       )}

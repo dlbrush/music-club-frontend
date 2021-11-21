@@ -3,7 +3,7 @@ import { useState } from "react"
 import ChooseAlbum from './ChooseAlbum';
 import MakePost from './MakePost';
 
-const NewPost = ({ club }) => {
+const NewPost = () => {
   const [ albumChoice, setAlbumChoice ] = useState(null);
   return (
     <section className="NewPost mt-3 mb-5">

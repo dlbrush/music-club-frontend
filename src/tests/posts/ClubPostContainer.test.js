@@ -3,7 +3,7 @@ import { MemoryRouter, Route } from 'react-router';
 import API from '../../api';
 import userContext from '../../contexts/userContext';
 import ClubPostContainer from '../../posts/ClubPostContainer';
-import { testPost1, testComment1, testComment2, testUserContext, testUser } from '../helpers/testHelpers';
+import { testPost1, testUserContext, testUser } from '../helpers/testHelpers';
 
 jest.mock('../../api');
 
