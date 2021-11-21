@@ -18,7 +18,7 @@ const PostCard = ({ post, showClub }) => {
       </div>
       <div className="col-12 col-md-6 border-start">
         {showClub && <p><small>Posted in {post['clubName']}</small></p>}
-        <p className="fst-italic">"{post.content}"</p>
+        {post.content && <p className="fst-italic">"{post.content}"</p>}
         {post.recTracks && <p>Recommended Tracks: {post.recTracks}</p>}
         <p><small>Posted by {post.postedBy}, {postedAtDate.toLocaleDateString()}</small></p>
       </div>

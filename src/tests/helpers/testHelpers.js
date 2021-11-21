@@ -124,9 +124,11 @@ export const testPost1 = {
   recTracks: 'recTracks',
   id: 1,
   clubId: 1,
+  clubName: 'Club',
   comments: [testComment1, testComment2],
   album: testSearchAlbum1,
-  postedAt: Date()
+  postedAt: Date(),
+  postedBy: 'test1'
 }
 
 export const testPost2 = {
@@ -134,7 +136,9 @@ export const testPost2 = {
   recTracks: 'more recTracks',
   id: 2,
   clubId: 1,
+  clubName: 'Club',
   comments: [],
   album: testSearchAlbum2,
-  postedAt: Date()
+  postedAt: Date(),
+  postedBy: 'test2'
 }
