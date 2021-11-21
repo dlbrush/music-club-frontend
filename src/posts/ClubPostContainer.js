@@ -29,23 +29,26 @@ const ClubPostContainer = ({ isMember }) => {
 
   const addComment = (comment) => {
     setPost(post => {
-      post.comments = [...post.comments, comment];
-      return {...post};
+      const newPostData = {...post};
+      newPostData.comments = [...newPostData.comments, comment];
+      return newPostData;
     });
   }
 
   const deleteComment = (commentId) => {
     setPost(post => {
-      post.comments = post.comments.filter(postComment => postComment.id !== commentId);
-      return {...post};
+      const newPostData = {...post};
+      newPostData.comments = newPostData.comments.filter(postComment => postComment.id !== commentId);
+      return newPostData;
     })
   }
 
   const editComment = (editedComment) => {
     setPost(post => {
-      const commentIndex = post.comments.findIndex(comment => comment.id === editedComment.id);
-      post.comments[commentIndex] = editedComment;
-      return {...post};
+      const newPostData = {...post};
+      const commentIndex = newPostData.comments.findIndex(comment => comment.id === editedComment.id);
+      newPostData.comments[commentIndex] = editedComment;
+      return newPostData;
     })
   }
 

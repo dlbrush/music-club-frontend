@@ -128,3 +128,13 @@ export const testPost1 = {
   album: testSearchAlbum1,
   postedAt: Date()
 }
+
+export const testPost2 = {
+  content: 'more content',
+  recTracks: 'more recTracks',
+  id: 2,
+  clubId: 1,
+  comments: [],
+  album: testSearchAlbum2,
+  postedAt: Date()
+}

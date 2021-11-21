@@ -27,7 +27,7 @@ describe('Body', () => {
 
     it('Shows welcome screen on root route', () => {
       const { getByText } = renderUnauthContext();
-      expect(getByText('Welcome!')).toBeInTheDocument();
+      expect(getByText('Share. Discuss. Discover.')).toBeInTheDocument();
     });
   });
 
