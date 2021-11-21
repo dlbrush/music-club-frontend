@@ -48,7 +48,7 @@ const Guide = () => {
       <article className="my-3 border-bottom">
         <h4 id="#clubs">Clubs</h4>
         <img className="Guide-image border d-block mx-auto" src={ExampleClub} alt="The homepage of a club with no posts."/>
-        <p className="mt-3">A club is where the action happens in Music Club. Clubs are where you can make posts and comment on others' posts. Find a club posting music you're interested in or have a friend invite you to theirs!</p>
+        <p className="mt-3">A club is where the action happens in Music Club. A music club is sort of like a book club - share an album you think other should listen to, and discuss it online! In the app, Clubs are where you can make posts and comment on others' posts. Find a club posting music you're interested in or have a friend invite you to theirs!</p>
         <h5 className="my-3 pt-4 border-top" id="#clubs-starting">Starting a club</h5>
         <img className="Guide-image border d-block mx-auto" src={QuickstartImage} alt="The interface for starting a new club."/>
         <ul className="my-4">

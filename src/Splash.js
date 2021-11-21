@@ -10,7 +10,7 @@ const Splash = () => {
       </div>
       <article className="my-3">
         <h3 className="text-center">Recommend and discuss albums with anyone, anywhere.</h3>
-        <p className="lead mt-3 px-md-3 text-center">Music Club allows you to post about the albums you're listening to. Join a club that shares your interests, or start your own and invite your friends.</p>
+        <p className="lead mt-3 px-md-3 text-center">Music Club allows you to share and talk about the albums you're listening to. A music club is like a book club - share something you think others should listen to, and talk about it together! Join a club that shares your interests, or start your own and invite your friends.</p>
         <p className="lead mt-3 px-md-3 text-center"><Link to="/register">Register to get started.</Link></p>
         <p className="lead mt-3 px-md-3 text-center"><Link to="/guide">Learn how it works.</Link></p>
         <p className="mt-3 px-md-3 text-center"><small>Designed by Devlin Brush.</small></p>
