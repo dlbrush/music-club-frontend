@@ -4,6 +4,8 @@ A React single-page frontend for the Music Club app. Uses React Router to handle
 
 Backend repo located here: [https://github.com/dlbrush/music-club-backend](https://github.com/dlbrush/music-club-backend)
 
+This frontend is deployed to [https://music-club.surge.sh/](https://music-club.surge.sh/). The backend is deployed to [https://music-club-backend.herokuapp.com/](https://music-club-backend.herokuapp.com/).
+
 ## Table of contents
 
 - [Music Club (Frontend)](#music-club-frontend)

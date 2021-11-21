@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URI = process.env.API_URI || 'http://localhost:3000';
+export const API_URI = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
 
 class API {
   static async checkAuth () {
