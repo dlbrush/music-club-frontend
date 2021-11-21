@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router';
 import PostCard from '../../posts/PostCard';
-import { testPost1, testPost2, testUserContext } from '../helpers/testHelpers';
+import { testPost1 } from '../helpers/testHelpers';
 
 
 describe('PostCard', () => {
@@ -37,5 +37,18 @@ describe('PostCard', () => {
       </MemoryRouter>
     )
     getByText('Posted in Club');
+  });
+
+  it('Directs user to post link when clicked', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <PostCard post={testPost1} showClub={true} />
+        <Route exact path="/clubs/1/posts/1">
+          Redirected
+        </Route>
+      </MemoryRouter>
+    )
+    fireEvent.click(getByText(testPost1.album.artist));
+    getByText('Redirected');
   });
 });

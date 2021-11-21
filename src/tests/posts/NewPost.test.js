@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router';
 import API from '../../api';
 import NewPost from '../../posts/NewPost';
-import { testPost1, testUserContext, testUser, testSearchAlbum1, testSearchAlbum2 } from '../helpers/testHelpers';
+import { testSearchAlbum1, testSearchAlbum2 } from '../helpers/testHelpers';
 
 jest.mock('../../api');
 
