@@ -12,9 +12,15 @@ const AppNav = () => {
     badgeColor = user.invitations.length > 0 ? 'danger' : 'secondary';
   }
   return (
-    <nav className="AppNav flex-column col-md-3 col-lg-2">
+    <div className="col-md-3 col-lg-2 flex-column">
+    <nav className="AppNav navbar-light navbar-expand-md">
+      <div className="d-grid">
+      <button className="my-1 navbar-toggler text-black" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span> Menu
+    </button>
+      </div>
         {!user && 
-          <ul className="list-group list-group-flush">
+          <ul id="navbarSupportedContent" className="collapse navbar-collapse list-group list-group-flush">
             <NavLink className="list-group-item list-group-item-action" exact to='/'>
               Home
             </NavLink>
@@ -30,7 +36,7 @@ const AppNav = () => {
           </ul>
         }
         {user && 
-          <ul className="list-group list-group-flush">
+          <ul id="navbarSupportedContent" className="collapse navbar-collapse list-group list-group-flush">
             <NavLink className="list-group-item list-group-item-action" exact to='/recent'>
               Recent
             </NavLink>
@@ -57,6 +63,7 @@ const AppNav = () => {
           </ul>
         }
     </nav>
+    </div>
   )
 }
 
